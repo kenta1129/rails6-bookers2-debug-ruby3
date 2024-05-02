@@ -6,6 +6,7 @@ before_action :is_matching_login_user, only: [:edit, :destroy]
     @book = Book.find(params[:id])
      @user = @book.user
     @book_new = Book.new
+    @post_comment = PostComment.new
   end
 
   def index
@@ -40,7 +41,7 @@ before_action :is_matching_login_user, only: [:edit, :destroy]
 
   def destroy
     @book = Book.find(params[:id])
-    @book.destoy
+    @book.destroy
     flash[:notice] = "Book was successfully destroyed."
     redirect_to books_path
   end
