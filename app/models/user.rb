@@ -19,12 +19,12 @@ has_many :followers, through: :reverse_of_relationships, source: :follower
   validates :name,{uniqueness: true, length: {minimum:2,maximum:20}}
   validates :introduction ,length: {maximum: 50 }
 
-def follow(user_id)
-  relationships.create(followed_id: user_id)
+def follow(user)
+  relationships.create(followed_id: user.id)
 end
 
-def unfollow(user_id)
-  relationships.find_by(followed_id: user_id).destroy
+def unfollow(user)
+  relationships.find_by(followed_id: user.id).destroy
 end
 
 def following?(user)

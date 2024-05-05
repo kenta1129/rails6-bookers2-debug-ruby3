@@ -14,10 +14,6 @@ class UsersController < ApplicationController
     @book = Book.new
   end
   def edit
-     @user = User.find(params[:id])
-    if @user != current_user
-       redirect_to user_path(current_user)
-    end
   end
 
   def update
@@ -27,7 +23,6 @@ class UsersController < ApplicationController
    redirect_to user_path(@user)
    else
     render :edit
-    flash.now[:notice] = "error"
    end
   end
 
